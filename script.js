@@ -1,6 +1,5 @@
 class PromoGame {
     constructor() {
-        // Кэшируем DOM-элементы
         this.app = document.getElementById('app');
         this.overlay = document.getElementById('blink-overlay');
 
@@ -10,18 +9,39 @@ class PromoGame {
             3: document.getElementById('view-windows')
         };
 
-        // Интерактивные зоны
         this.macbookHitbox = document.querySelector('.macbook-hitbox');
         this.windowsHitbox = document.querySelector('.windows-screen');
         this.macbookView = document.getElementById('view-macbook');
         this.windowsFullView = document.getElementById('view-windows');
 
-        // Флаг для защиты от двойных кликов во время анимации
         this.isTransitioning = false;
 
-        // Инициализируем слушатели событий
         this.initEventListeners();
+
+        // Добавляем вызов ресайза
+        this.initResize();
     }
+
+    // --- НОВЫЙ БЛОК ДЛЯ МАСШТАБИРОВАНИЯ ---
+    initResize() {
+        this.resizeApp(); // Подгоняем при старте
+        window.addEventListener('resize', () => this.resizeApp()); // Подгоняем при изменении окна
+    }
+
+    resizeApp() {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+
+        // ВАЖНО: Те же размеры, что и в CSS!
+        const baseWidth = 2390;
+        const baseHeight = 1792;
+
+        // Math.max заставляет контейнер вести себя ровно как background-size: cover
+        const scale = Math.max(windowWidth / baseWidth, windowHeight / baseHeight);
+
+        this.app.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    }
+    // --------------------------------------
 
     initEventListeners() {
         // --- Состояние 1 ---
