@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Room Promo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app" class="state-1">
+
+        <div id="view-main" class="view active">
+            <div class="macbook-hitbox"></div>
+
+            <div class="windows-screen">
+                <span class="blinking-text">нажмите, чтобы запустить windows</span>
+            </div>
+        </div>
+
+        <div id="view-macbook" class="view">
+            <div class="macbook-safezone"></div>
+        </div>
+
+        <div id="view-windows" class="view">
+            <span class="blinking-text">нажмите, чтобы запустить windows</span>
+        </div>
+
+    </div>
+
+    <div id="blink-overlay"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
