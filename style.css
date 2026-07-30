@@ -32,7 +32,7 @@ body, html {
 }
 
 #app.state-1 { background-image: url('./img/main.png'); }
-#app.state-2 { background-image: url('img/macbook0.png'); }
+#app.state-2 { background-image: url('img/macbook.png'); }
 #app.state-3 {
     background-image: none;
     background-color: #000;
